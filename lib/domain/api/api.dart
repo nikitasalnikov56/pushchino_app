@@ -1,10 +1,13 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:pushchino_app/domain/models/billing_data.dart';
 import 'package:pushchino_app/domain/models/get_measuring_devices.dart';
 import 'package:pushchino_app/domain/models/personal_user_data.dart';
+import 'package:flutter/foundation.dart';
+
 
 class Api {
   static const String city = 'dmitrov';
@@ -153,4 +156,61 @@ class Api {
     }
     return null;
   }
+
+
+
+
+Future<Uint8List?> fetchPrintFormAsBytes({
+  required String login,
+  required String password,
+  required DateTime date,
+  required int type,
+}) async {
+  try {
+    final token = await fetchNewToken(login, password);
+    if (token == null) {
+      throw Exception('Не удалось получить токен.');
+    }
+
+    final currentDate = DateFormat('yyyy-MM-dd').format(date);
+    final response = await _dio.get<ResponseBody>(
+      'GetPrintForm',
+      queryParameters: {
+        'Token': token.trim(),
+        'Period': currentDate,
+        'OperationType': type,
+      },
+      options: Options(
+        headers: {
+          'Accept': 'application/pdf',
+        },
+        responseType: ResponseType.stream, // Для потокового ответа
+      ),
+    );
+
+    if (response.statusCode != 200) {
+      throw Exception(
+          'Ошибка при получении PDF: ${response.statusCode}');
+    }
+
+    // Преобразуем поток в массив байтов вручную
+    final responseData = response.data;
+    if (responseData == null) {
+      throw Exception('Данные не получены.');
+    }
+
+    final bytes = <int>[];
+    await for (var chunk in responseData.stream) {
+      bytes.addAll(chunk);
+    }
+
+    return Uint8List.fromList(bytes);
+  } catch (e) {
+    log('Ошибка при загрузке PDF: $e');
+    return null;
+  }
+}
+
+
+
 }

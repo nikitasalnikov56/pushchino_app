@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 368.49 368.66">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #ec6557;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-1, .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-3 {
+        fill: #fefefc;
+      }
+
+      .cls-4 {
+        fill: #fefefe;
+      }
+    </style>
+  </defs>
+  <rect class="cls-2" x="43.78" y="43.95" width="280.93" height="280.93" rx="34.78" ry="34.78" transform="translate(-76.44 184.3) rotate(-45)"/>
+  <g id="g20">
+    <path id="path18" class="cls-4" d="M179.26,93.48h32.45v22.58h-23.99v22.58h-8.47v-45.15Z"/>
+  </g>
+  <g id="g28">
+    <path id="path26" class="cls-3" d="M121.41,148.5h124.16v16.93h-124.16v-16.93Z"/>
+  </g>
+  <g id="g32">
+    <path id="path30" class="cls-3" d="M203.25,251.31c0-13.17.17-26.1.17-39.27l-38.26-.06s0,26.63,0,39.33h-67.73v-76.19h172.14v76.19h-66.32Z"/>
+  </g>
+  <g id="g36">
+    <path id="path34" class="cls-1" d="M244.17,189.42h9.88v16.93h-9.88v-16.93Z"/>
+  </g>
+  <g id="g40">
+    <path id="path38" class="cls-1" d="M134.11,189.42h9.88v16.93h-9.88v-16.93Z"/>
+  </g>
+  <g id="g44">
+    <path id="path42" class="cls-1" d="M201.84,190.83v9.88h-36.68v-9.88h36.68Z"/>
+  </g>
+  <g id="g48">
+    <path id="path46" class="cls-1" d="M223,189.42h9.88v16.93h-9.88v-16.93Z"/>
+  </g>
+  <g id="g56">
+    <path id="path54" class="cls-1" d="M112.95,189.42h9.88v16.93h-9.88v-16.93Z"/>
+  </g>
+  <g id="g60">
+    <path id="path58" class="cls-1" d="M223,216.23h9.88v16.93h-9.88v-16.93Z"/>
+  </g>
+  <g id="g64">
+    <path id="path62" class="cls-1" d="M112.95,216.23h9.88v16.93h-9.88v-16.93Z"/>
+  </g>
+  <g id="g68">
+    <path id="path66" class="cls-1" d="M134.11,216.23h9.88v16.93h-9.88v-16.93Z"/>
+  </g>
+  <g id="g76">
+    <path id="path74" class="cls-1" d="M244.17,216.23h9.88v16.93h-9.88v-16.93Z"/>
+  </g>
+  <g id="g80">
+    <path id="path78" class="cls-4" d="M175.03,223.28h16.93v28.22h-16.93v-28.22Z"/>
+  </g>
+</svg>

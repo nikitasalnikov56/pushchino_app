@@ -8,8 +8,9 @@ class RowItemsData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 26, right: 28, top: 54, bottom: 54),
+      padding:  const EdgeInsets.only(left: 26, right: 28, top: 54, bottom: 54),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           SizedBox(
             width: 90,
@@ -20,7 +21,7 @@ class RowItemsData extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 21),
+          // const SizedBox(width: 21),
           Container(
             width: 42,
             height: 35,
@@ -37,28 +38,28 @@ class RowItemsData extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 18),
+          // const SizedBox(width: 18),
           Text(
             'ДНЕЙ',
             style: AppStyle.fontStyle.copyWith(
               fontWeight: FontWeight.w300,
             ),
           ),
-          const SizedBox(width: 18),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.green,
-            ),
-            onPressed: () {},
-            child: Text(
-              'ПЕРЕДАТЬ\nПОКАЗАНИЯ',
-              textAlign: TextAlign.center,
-              style: AppStyle.fontStyle.copyWith(
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
+          // const SizedBox(width: 18),
+          // ElevatedButton(
+          //   style: ElevatedButton.styleFrom(
+          //     backgroundColor: AppColors.green,
+          //   ),
+          //   onPressed: () {},
+          //   child: Text(
+          //     'ПЕРЕДАТЬ\nПОКАЗАНИЯ',
+          //     textAlign: TextAlign.center,
+          //     style: AppStyle.fontStyle.copyWith(
+          //       fontSize: 12,
+          //       fontWeight: FontWeight.w400,
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

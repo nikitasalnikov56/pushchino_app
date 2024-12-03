@@ -96,19 +96,7 @@ class RightCard extends StatelessWidget {
               ],
             ),
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.smokeRed,
-            ),
-            onPressed: () {},
-            child: Text(
-              'ПОПОЛНИТЬ БАЛЛАНС'.toUpperCase(),
-              textAlign: TextAlign.center,
-              style: AppStyle.fontStyle.copyWith(
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
+        
         ],
       ),
     );

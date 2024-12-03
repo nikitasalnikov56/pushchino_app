@@ -4,6 +4,7 @@ import 'package:pushchino_app/domain/manager/auth_bloc/authorization_bloc.dart';
 import 'package:pushchino_app/domain/manager/navbar_bloc/bottom_navbar_bloc.dart';
 import 'package:pushchino_app/ui/components/appbar_widget.dart';
 import 'package:pushchino_app/ui/components/chart_background_painter.dart';
+import 'package:pushchino_app/ui/components/drawer_widget.dart';
 import 'package:pushchino_app/ui/components/meter_row_item.dart';
 import 'package:pushchino_app/ui/components/row_info_cards.dart';
 import 'package:pushchino_app/ui/components/row_items_data.dart';
@@ -27,113 +28,42 @@ class MainPage extends StatelessWidget {
       child: const Scaffold(
         appBar: AppBarWidget(),
         backgroundColor: AppColors.blue,
-        drawer: Drawer(),
+        drawer: DrawerWidget(),
         body: MainAppBody(),
+        bottomNavigationBar: BottomNavbarWidget(),
       ),
     );
   }
 }
+
+
 
 class MainAppBody extends StatelessWidget {
   const MainAppBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BottomNavbarBloc, BottomNavbarState>(
-      builder: (context, state) {
-        final index = state is BottomNavbarLoadState ? state.index : 0;
-
-        return Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage(
-                AppImages.bgWaves,
-              ),
-            ),
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage(
+            AppImages.bgWaves,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const AppBody(),
-              BottomNavigationBar(
-                elevation: 0,
-                currentIndex: index,
-                showSelectedLabels: false,
-                showUnselectedLabels: false,
-                onTap: (index) {
-                  context
-                      .read<BottomNavbarBloc>()
-                      .add(BottomNavbarLoadEvent(index: index));
-                },
-                items: [
-                  BottomNavigationBarItem(
-                    backgroundColor: Colors.transparent,
-                    icon: Image.asset(
-                      AppImages.home,
-                      color: const Color(0xFF95A1B9),
-                    ),
-                    label: '',
-                    activeIcon: Image.asset(
-                      AppImages.home,
-                      color: AppColors.white,
-                    ),
-                  ),
-                  BottomNavigationBarItem(
-                    backgroundColor: Colors.transparent,
-                    icon: Image.asset(
-                      AppImages.service,
-                      color: const Color(0xFF95A1B9),
-                    ),
-                    label: '',
-                    activeIcon: Image.asset(
-                      AppImages.serviceActive,
-                      color: AppColors.white,
-                    ),
-                  ),
-                  BottomNavigationBarItem(
-                    backgroundColor: Colors.transparent,
-                    icon: Image.asset(AppImages.info),
-                    label: '',
-                    activeIcon: Image.asset(
-                      AppImages.infoActive,
-                      color: AppColors.white,
-                    ),
-                  ),
-                  BottomNavigationBarItem(
-                    backgroundColor: Colors.transparent,
-                    icon: Image.asset(
-                      AppImages.chart,
-                      color: const Color(0xFF95A1B9),
-                    ),
-                    label: '',
-                    activeIcon: Image.asset(
-                      AppImages.chartActive,
-                      color: AppColors.white,
-                    ),
-                  ),
-                  BottomNavigationBarItem(
-                    backgroundColor: Colors.transparent,
-                    icon: Image.asset(
-                      AppImages.balance,
-                      color: const Color(0xFF95A1B9),
-                    ),
-                    label: '',
-                    activeIcon: Image.asset(
-                      AppImages.balanceActive,
-                      color: AppColors.white,
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-        );
-      },
+        ),
+      ),
+      child: const SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AppBody(),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -248,9 +178,9 @@ class ChartBackground extends StatelessWidget {
                     constraints:
                         const BoxConstraints(maxHeight: 160, maxWidth: 140),
                     child: Padding(
-                      padding:  EdgeInsets.only(left: i%2!=0 ? 0: 30.0),
+                      padding: EdgeInsets.only(left: i % 2 != 0 ? 0 : 30.0),
                       child: ListView.separated(
-                                     padding: const EdgeInsets.all(0),
+                        padding: const EdgeInsets.all(0),
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, j) {
                           return Column(
@@ -308,6 +238,91 @@ class ChartBackground extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class BottomNavbarWidget extends StatelessWidget {
+  const BottomNavbarWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<BottomNavbarBloc, BottomNavbarState>(
+      builder: (context, state) {
+        final index = state is BottomNavbarLoadState ? state.index : 0;
+        return BottomNavigationBar(
+          elevation: 0,
+          currentIndex: index,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          onTap: (index) {
+            context
+                .read<BottomNavbarBloc>()
+                .add(BottomNavbarLoadEvent(index: index));
+          },
+          items: [
+            BottomNavigationBarItem(
+              backgroundColor: Colors.transparent,
+              icon: Image.asset(
+                AppImages.home,
+                color: const Color(0xFF95A1B9),
+              ),
+              label: '',
+              activeIcon: Image.asset(
+                AppImages.home,
+                color: AppColors.white,
+              ),
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.transparent,
+              icon: Image.asset(
+                AppImages.service,
+                color: const Color(0xFF95A1B9),
+              ),
+              label: '',
+              activeIcon: Image.asset(
+                AppImages.serviceActive,
+                color: AppColors.white,
+              ),
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.transparent,
+              icon: Image.asset(AppImages.info),
+              label: '',
+              activeIcon: Image.asset(
+                AppImages.infoActive,
+                color: AppColors.white,
+              ),
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.transparent,
+              icon: Image.asset(
+                AppImages.chart,
+                color: const Color(0xFF95A1B9),
+              ),
+              label: '',
+              activeIcon: Image.asset(
+                AppImages.chartActive,
+                color: AppColors.white,
+              ),
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.transparent,
+              icon: Image.asset(
+                AppImages.balance,
+                color: const Color(0xFF95A1B9),
+              ),
+              label: '',
+              activeIcon: Image.asset(
+                AppImages.balanceActive,
+                color: AppColors.white,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

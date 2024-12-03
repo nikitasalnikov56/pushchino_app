@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pushchino_app/domain/manager/auth_bloc/authorization_bloc.dart';
 import 'package:pushchino_app/ui/resources/app_icons.dart';
-import 'package:pushchino_app/ui/resources/app_images.dart';
 import 'package:pushchino_app/ui/style/app_style.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -17,7 +16,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       builder: (context, state) {
         final newState = state is AuthorizationLoadedState ? state : null;
         return Padding(
-          padding: const EdgeInsets.only(top: 50, left: 26, right: 21),
+          padding: const EdgeInsets.only(top: 30, left: 26, right: 21),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -28,7 +27,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                 },
                 child: SizedBox(
                   width: 30,
-                  height: 17,
+                  height: 20,
                   child: SvgPicture.asset(
                     AppIcons.menu,
                   ),
@@ -52,10 +51,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                       fontWeight: FontWeight.w300,
                     ),
                   ),
-                  trailing: CircleAvatar(
-                    radius: 31.5,
-                    child: Image.asset(AppImages.user),
-                  ),
+                 
                 ),
               ),
             ],
@@ -66,5 +62,5 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size(double.infinity, 135);
+  Size get preferredSize => const Size(double.infinity, 145);
 }
